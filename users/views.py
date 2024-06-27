@@ -64,8 +64,13 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-def helloWorld(request):
-    return HttpResponse("Hello World")
+def helloWorld(request, name):
+    if name.lower() == 'mayank':
+        return HttpResponse('Hello Mayank')
+    elif name.lower() == 'vivek':
+        return HttpResponse('Hello Vivek')
+    else:
+        return HttpResponse(f'Hello {name}')
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
